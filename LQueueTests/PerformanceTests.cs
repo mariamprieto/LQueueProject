@@ -19,6 +19,7 @@ Observations:
 - Enqueue performed very fast for all data types, confirming its expected amortized O(1) complexity.
 - Dequeue took longer because it involves shifting elements, confirming its expected O(n) complexity.
 - Peek was consistently fast regardless of the data type, confirming its O(1) behavior.
+  This is because Peek simply accesses the first element in the list without traversing or shifting any other elements.
 - Contains performed slower when searching for elements near the end of the queue, confirming its O(n) behavior.
   To better observe the time difference, Stopwatch.ElapsedTicks was used instead of ElapsedMilliseconds
 
@@ -99,7 +100,7 @@ public class PerformanceTests
       queue.Peek();
     }
     sw.Stop();
-    Console.WriteLine($"Peek {count}: times took: {sw.ElapsedMilliseconds} ms");
+    Console.WriteLine($"Peek {count}: times took: {sw.ElapsedTicks} ticks ");
     // Defect(s) Found:
   } 
   
@@ -197,7 +198,7 @@ public class PerformanceTests
       queue.Peek();
     }
     sw.Stop();
-    Console.WriteLine($"Peek {count}: times took: {sw.ElapsedMilliseconds} ms");
+    Console.WriteLine($"Peek {count}: times took: {sw.ElapsedTicks} ticks");
     // Defect(s) Found:
   } 
   
@@ -293,7 +294,7 @@ public class PerformanceTests
       queue.Peek();
     }
     sw.Stop();
-    Console.WriteLine($"Peek {count}: times took: {sw.ElapsedMilliseconds} ms");
+    Console.WriteLine($"Peek {count}: times took: {sw.ElapsedTicks} ticks");
     // Defect(s) Found:
   } 
   
